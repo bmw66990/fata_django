@@ -16,7 +16,8 @@ RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak
 COPY sources.list /etc/apt
 RUN apt-get update
 RUN apt-get install -y git
-RUN git clone https://github.com/enjoy-binbin/Django-blog.git
+# https://github.com/enjoy-binbin/Django-blog.git
+RUN git clonehttps://github.com/bmw66990/fata_django.git
 
 # 复制配置文件
 # RUN cp ./fata_django/api_leakage/settings_docker.py ./fata_django/api_leakage/settings.py
