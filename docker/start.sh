@@ -11,7 +11,7 @@ source ./start_mysql.sh
 sleep 2
 
 echo "start django-blog ----------------"
-cd ../api_leakage
+cd ../fata_django
 source ./start_django_blog.sh
 sleep 2
 

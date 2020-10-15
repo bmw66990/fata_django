@@ -90,7 +90,7 @@ WSGI_APPLICATION = 'api_leakage.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'HOST': '127.0.0.1',
+        'HOST': 'localhost',
         'NAME': 'fata',
         'USER': 'root',
         'PASSWORD': '123456',
