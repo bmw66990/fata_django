@@ -27,8 +27,9 @@ RUN pip install --upgrade pip
 # 安装依赖, 使用阿里云镜像
 RUN pip install --no-cache-dir -i http://mirrors.aliyun.com/pypi/simple/ -r fata_django/requirements.txt --trusted-host mirrors.aliyun.com
 #
-RUN pip install --no-cache-dir -i http://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com gunicorn
+RUN pip install --no-cache-dir -i http://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com uwsgi
 #
 WORKDIR /var/www/fata_django
 #
+CMD uwsgi --ini uwsgi.ini &
 #CMD python manage.py makemigrations; python manage.py migrate; python manage.py create_fake_data; python manage.py collectstatic --noinput; python manage.py compress --force; gunicorn binblog.wsgi --bind 0.0.0.0:8000
