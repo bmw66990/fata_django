@@ -15,12 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import TemplateView
 from rest_framework_jwt.views import obtain_jwt_token
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
+    path('index', TemplateView.as_view(template_name="index.html")),
     path('admin/', admin.site.urls),
     path("oauth/", include('oauth2_provider.urls', namespace='oauth2_provider')),
     path('api/accounts/login/', obtain_jwt_token, name="login"),
     path('api/user/',include('accounts.urls')),
     path('api/valve/',include('valve.urls'))
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
