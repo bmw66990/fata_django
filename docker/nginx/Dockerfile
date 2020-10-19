@@ -4,16 +4,4 @@ FROM daocloud.io/nginx:1.15
 # 维护者
 MAINTAINER panpan <mapanpan@qq.com>
 
-# 这样创建并进入容器查看相关配置文件
-# docker run -i -t  daocloud.io/nginx:1.14 /bin/bash
-
-# 先删除里面的默认配置文件, 移入自己的配置
-# 因为默认配置会占用80, 这个镜像是基于Debian, 所以配置文件信息是这样的
-# RUN rm /etc/nginx/conf.d/default.conf
-COPY fata_django.conf /etc/nginx/conf.d/
-
-# 设置容器时区跟宿主机一样为东八区
-RUN rm -rf /etc/localtime && ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-
-# Run nginx
-CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
+COPY uwsgi_nginx.conf /etc/nginx/conf.d/default.conf
